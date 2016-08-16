@@ -1,0 +1,27 @@
+{
+  "name": "sainsburys-flickr-api-test",
+  "description": "The Flickr API test for Sainsbury's",
+  "main": "app.js",
+  "authors": [
+    "Andrew Havis"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "sainsburys",
+    "flickr",
+    "apis",
+    "tests"
+  ],
+  "homepage": "https://github.com/AndrewHavis/sainsburys-flickr-api-test",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
