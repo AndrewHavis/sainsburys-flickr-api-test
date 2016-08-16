@@ -1,0 +1,7 @@
+body {
+    text-align: center;
+}
+
+div.photoRow, div.header-secondary {
+    margin-bottom: 1em;
+}

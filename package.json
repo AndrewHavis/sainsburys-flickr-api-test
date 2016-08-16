@@ -1,0 +1,28 @@
+{
+  "name": "sainsburys-flickr-api-test",
+  "version": "1.0.0",
+  "description": "The Flickr API test for Sainsbury's",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewHavis/sainsburys-flickr-api-test.git"
+  },
+  "keywords": [
+    "sainsburys",
+    "flickr",
+    "apis",
+    "tests"
+  ],
+  "author": "Andrew Havis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewHavis/sainsburys-flickr-api-test/issues"
+  },
+  "homepage": "https://github.com/AndrewHavis/sainsburys-flickr-api-test#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
