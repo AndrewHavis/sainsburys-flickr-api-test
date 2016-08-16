@@ -7,6 +7,9 @@ const app = express();
 // Assign the root of this app to the ./app directory
 app.use('/', express.static(__dirname + '/app'));
 
+// Assign /test to our unit tests
+app.use('/test', express.static(__dirname + '/test'));
+
 // Get our Bower libraries
 app.use('/lib', express.static(__dirname + '/bower_components'));
 

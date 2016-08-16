@@ -5,3 +5,7 @@ body {
 div.photoRow, div.header-secondary {
     margin-bottom: 1em;
 }
+
+img.selected {
+    border: 4px dashed orange;
+}

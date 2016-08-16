@@ -10,7 +10,8 @@
         "beforeEach": false,
         "waits": false,
         "waitsFor": false,
-        "runs": false
+        "runs": false,
+        "QUnit": false
     },
 
     "node" : true,
