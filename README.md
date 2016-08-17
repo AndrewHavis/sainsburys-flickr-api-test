@@ -1,5 +1,5 @@
-# sainsburys-flickr-api-test
-The JSON API test for the Sainsbury's Front-End Developer recruitment process
+# Sainsbury's Programming Test
+The programming test for the Sainsbury's Front-End Developer recruitment process.
 
 ## Installation
 To install this application, simply clone it in the usual way and then run the following two commands:
