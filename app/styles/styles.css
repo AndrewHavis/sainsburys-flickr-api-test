@@ -3,7 +3,11 @@ body {
 }
 
 div.photoRow, div.header-secondary {
-    margin-bottom: 1em;
+    margin: 1em;
+}
+
+div.photoRow img {
+    margin: 1em;
 }
 
 img.selected {

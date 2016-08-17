@@ -7,8 +7,11 @@ var cb = function (data) {
     var photos = document.getElementById('photos');
 
     // We will create a grid with four photos per row, as there should be 20 photos returned
+    // For tablets, we will have three photos per row, and two photos per row for mobile
     // However, we won't make a hard assumption that there are 20 photos - more or less than 20 should be allowed
     var photosPerRow = 4;
+    var photosPerRowTablet = 3;
+    var photosPerRowMobile = 2;
     var numberOfRows = Math.ceil(data.items.length / photosPerRow);
     var imgNum = 0; // Used to assign our image numbers
 
@@ -20,7 +23,7 @@ var cb = function (data) {
         for (var j = 0; j < photosPerRow; j++) {
             // Create our image section
             var divCol = document.createElement('div');
-            divCol.className = 'col-md-' + (12 / photosPerRow);
+            divCol.className = 'col-md-' + (12 / photosPerRow) + ' col-sm-' + (12 / photosPerRowTablet) + ' col-xs-' + (12 / photosPerRowMobile);
 
             // Create our image tag
             var imgTag = createFlickrImgTag(data.items[imgNum], imgNum);
