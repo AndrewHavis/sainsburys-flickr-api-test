@@ -4,9 +4,9 @@
 // For tablets, we will have three photos per row, and two photos per row for mobile
 // However, we won't make a hard assumption that there are 20 photos - more or less than 20 should be allowed
 
-// Get the window width (excluding scrollbars and toolbars etc), and define breakpoints for tablet and mobile
+// Get the screen width, and define breakpoints for tablet and mobile
 // These should match the breakpoints for Bootstrap
-var windowWidth = window.innerWidth;
+var screenWidth = screen.width;
 var bpTablet = 992;
 var bpMobile = 768;
 
@@ -17,7 +17,7 @@ var cb = function (data) {
     var photos = document.getElementById('photos');
 
     // Calculate the number of photos per row
-    var photosPerRow = calculatePhotosPerRow(windowWidth);
+    var photosPerRow = calculatePhotosPerRow(screenWidth);
 
     // Now determine the number of rows to use
     var numberOfRows = Math.ceil(data.items.length / photosPerRow);
@@ -148,14 +148,14 @@ var deselectImage = function(tag, item) {
 
 };
 
-var calculatePhotosPerRow = function(windowWidth) {
+var calculatePhotosPerRow = function(width) {
     // Now set our photos per row according to our window width if we're viewing on a mobile device (or in a window that's been resized below the breakpoints)
     var photosPerRow;
-    if (windowWidth <= bpMobile) {
-        photosPerRow = 2;
+    if (width <= bpMobile) {
+        photosPerRow = 1;
     }
-    else if (windowWidth <= bpTablet) {
-        photosPerRow = 3;
+    else if (width <= bpTablet) {
+        photosPerRow = 2;
     }
     else {
         photosPerRow = 4;
