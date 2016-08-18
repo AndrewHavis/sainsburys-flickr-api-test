@@ -1,18 +1,27 @@
 'use strict';
 
+// We will create a grid with four photos per row, as there should be 20 photos returned
+// For tablets, we will have three photos per row, and two photos per row for mobile
+// However, we won't make a hard assumption that there are 20 photos - more or less than 20 should be allowed
+
+// Get the window width (excluding scrollbars and toolbars etc), and define breakpoints for tablet and mobile
+// These should match the breakpoints for Bootstrap
+var windowWidth = window.innerWidth;
+var bpTablet = 992;
+var bpMobile = 768;
+
 var cb = function (data) {
-    console.log(data);
+
     // Add our photos to the page
     // I have transferred this function outside of the function below to avoid errors about the callback variable being undefined
     var photos = document.getElementById('photos');
 
-    // We will create a grid with four photos per row, as there should be 20 photos returned
-    // For tablets, we will have three photos per row, and two photos per row for mobile
-    // However, we won't make a hard assumption that there are 20 photos - more or less than 20 should be allowed
-    var photosPerRow = 4;
-    var photosPerRowTablet = 3;
-    var photosPerRowMobile = 2;
+    // Calculate the number of photos per row
+    var photosPerRow = calculatePhotosPerRow(windowWidth);
+
+    // Now determine the number of rows to use
     var numberOfRows = Math.ceil(data.items.length / photosPerRow);
+
     var imgNum = 0; // Used to assign our image numbers
 
     // Now loop through the photos and create the grid
@@ -23,7 +32,7 @@ var cb = function (data) {
         for (var j = 0; j < photosPerRow; j++) {
             // Create our image section
             var divCol = document.createElement('div');
-            divCol.className = 'col-md-' + (12 / photosPerRow) + ' col-sm-' + (12 / photosPerRowTablet) + ' col-xs-' + (12 / photosPerRowMobile);
+            divCol.className = 'col-md-3 col-sm-6 col-xs-12';
 
             // Create our image tag
             var imgTag = createFlickrImgTag(data.items[imgNum], imgNum);
@@ -34,7 +43,13 @@ var cb = function (data) {
             // Add the divCol element as a child of divRow
             divRow.appendChild(divCol);
 
-            imgNum++; // Increment our image number
+            // If we've run out of photos, break out of the loop, otherwise increment the image number
+            if (imgNum === data.items.length - 1) {
+                break;
+            }
+            else {
+                imgNum++; // Increment our image number
+            }
         }
 
         // Append our row as a child of the photos element
@@ -69,6 +84,9 @@ var createFlickrImgTag = function (item, imgId) {
     if (!!imgId) {
         imgTag.setAttribute('id', 'photo-' + imgId);
     }
+
+    // Set a class name of 'flickrPhoto'
+    imgTag.className = 'flickrPhoto';
 
     // Now set a click listener for the image, so that we can select it
     // Note that we use the URL as a unique identifier for the image, rather than the ID attribute
@@ -130,6 +148,20 @@ var deselectImage = function(tag, item) {
 
 };
 
+var calculatePhotosPerRow = function(windowWidth) {
+    // Now set our photos per row according to our window width if we're viewing on a mobile device (or in a window that's been resized below the breakpoints)
+    var photosPerRow;
+    if (windowWidth <= bpMobile) {
+        photosPerRow = 2;
+    }
+    else if (windowWidth <= bpTablet) {
+        photosPerRow = 3;
+    }
+    else {
+        photosPerRow = 4;
+    }
+    return photosPerRow;
+};
 
 ( function () {
     // Get some recent public photos from Flickr with the tag 'london'
